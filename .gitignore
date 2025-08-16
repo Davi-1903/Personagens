@@ -22,6 +22,9 @@ venv/
 __pycache__/
 *.pyc
 
+# Banco de dados
+server/database/*.db
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
