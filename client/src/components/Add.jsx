@@ -7,7 +7,7 @@ export default function Add({ onAdd }) {
     async function addPersonagem(e) {
         e.preventDefault();
         const personagem = { nome, habilidade };
-        const response = await fetch('http://localhost:5000/add/personagem', {
+        const response = await fetch('http://localhost:5000/personagem/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(personagem),

@@ -15,6 +15,20 @@ export default function App() {
         }
     }
 
+    async function deletePersonagem(id) {
+        if (confirm('Você tem certeza?')) {
+            const response = await fetch(
+                `http://localhost:5000/personagens/delete/${id}`,
+                {
+                    method: 'DELETE',
+                }
+            );
+            const data = await response.json();
+            if (data.ok) getPersonagens();
+            alert(data.message);
+        }
+    }
+
     useEffect(() => {
         getPersonagens();
     }, []);
@@ -22,7 +36,10 @@ export default function App() {
     return (
         <>
             <Add onAdd={getPersonagens} />
-            <Table personagens={personagens} />
+            <Table
+                personagens={personagens}
+                deletePersonagem={deletePersonagem}
+            />
         </>
     );
 }

@@ -1,4 +1,4 @@
-export default function Table({personagens}) {
+export default function Table({ personagens, deletePersonagem }) {
     return (
         <table>
             <thead>
@@ -17,7 +17,11 @@ export default function Table({personagens}) {
                             <button>Update</button>
                         </td>
                         <td>
-                            <button>Delete</button>
+                            <button
+                                onClick={() => deletePersonagem(personagem.id)}
+                            >
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 ))}

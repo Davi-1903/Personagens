@@ -2,10 +2,10 @@ from flask import Blueprint, jsonify, request
 from database.model import db, Personagem
 
 
-per_bp = Blueprint('personagem', __name__)
+per_bp = Blueprint('personagem', __name__, url_prefix='/personagens')
 
 
-@per_bp.route('/personagens', methods=['GET'])
+@per_bp.route('/', methods=['GET'])
 def get_personagens():
     try:
         personagens = Personagem.query.all()
@@ -15,7 +15,7 @@ def get_personagens():
         return jsonify({'ok': False, 'message': 'Djabu foi?'}), 500
 
 
-@per_bp.route('/add/personagem', methods=['POST'])
+@per_bp.route('/add', methods=['POST'])
 def add_personagem():
     try:
         personagem = request.get_json()
@@ -26,3 +26,15 @@ def add_personagem():
     except:
         db.session.rollback()
         return jsonify({'ok': False, 'messagem': 'Tudo errado'}), 500
+
+
+@per_bp.route('/delete/<int:id>', methods=['DELETE'])
+def delete_personagem(id):
+    try:
+        personagem = db.session.get(Personagem, id)
+        db.session.delete(personagem)
+        db.session.commit()
+        return jsonify({'ok': True, 'message': 'Personagem deletado com sucesso'}), 200
+    except:
+        db.session.rollback()
+        return jsonify({'ok': False, 'message': 'Ocorreu algum erro'}), 500
