@@ -1,11 +1,11 @@
-import './App.css';
+import Add from './components/Add';
+import Table from './components/Table';
 
-function App() {
+export default function App() {
     return (
         <>
-            <h1>Hello World!</h1>
+            <Add />
+            <Table />
         </>
     );
 }
-
-export default App;
