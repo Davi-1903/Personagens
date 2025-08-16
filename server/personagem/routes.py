@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify
-from database.model import Personagem
+from flask import Blueprint, jsonify, request
+from database.model import db, Personagem
 
 
 per_bp = Blueprint('personagem', __name__)
@@ -13,3 +13,16 @@ def get_personagens():
         return jsonify({'ok': True, 'personagens': personagens}), 200
     except:
         return jsonify({'ok': False, 'message': 'Djabu foi?'}), 500
+
+
+@per_bp.route('/add/personagem', methods=['POST'])
+def add_personagem():
+    try:
+        personagem = request.get_json()
+        personagem = Personagem(**personagem)
+        db.session.add(personagem)
+        db.session.commit()
+        return jsonify({'ok': True, 'messagem': 'Tudo certo'}), 200
+    except:
+        db.session.rollback()
+        return jsonify({'ok': False, 'messagem': 'Tudo errado'}), 500

@@ -1,8 +1,41 @@
+import { useState } from 'react';
+
 export default function Add() {
+    const [nome, setNome] = useState('');
+    const [habilidade, setHabilidade] = useState('');
+
+    async function addPersonagem(e) {
+        e.preventDefault();
+        const personagem = { nome, habilidade };
+        const response = await fetch('http://localhost:5000/add/personagem', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(personagem),
+        });
+        const data = await response.json();
+        if (data.ok) {
+            setNome('');
+            setHabilidade('');
+            console.log(data.message);
+        } else {
+            console.erro(data.message);
+        }
+    }
+
     return (
-        <form>
-            <input type='text' placeholder='Nome' />
-            <input type='text' placeholder='Habilidade' />
+        <form onSubmit={addPersonagem}>
+            <input
+                type='text'
+                placeholder='Nome'
+                value={nome}
+                onChange={e => setNome(e.target.value)}
+            />
+            <input
+                type='text'
+                placeholder='Habilidade'
+                value={habilidade}
+                onChange={e => setHabilidade(e.target.value)}
+            />
             <button type='submit'>Adicionar</button>
         </form>
     );

@@ -35,7 +35,7 @@ export default function Table() {
                             <button>Update</button>
                         </td>
                         <td>
-                            <button>Delte</button>
+                            <button>Delete</button>
                         </td>
                     </tr>
                 ))}
