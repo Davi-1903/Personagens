@@ -1,11 +1,11 @@
 from flask import Flask
-from flask_cors import CORS
+from personagem.routes import per_bp
 import config
 
 
 app = Flask(__name__)
 config.config_app(app, __file__)
-CORS(app)
+app.register_blueprint(per_bp)
 
 
 if __name__ == '__main__':
