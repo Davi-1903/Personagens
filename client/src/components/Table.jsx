@@ -1,22 +1,4 @@
-import { useEffect, useState } from 'react';
-
-export default function Table() {
-    const [personagens, setPersonagens] = useState([]);
-
-    useEffect(() => {    
-        getPersonagens();
-    }, []);
-
-    async function getPersonagens() {
-        const response = await fetch('http://localhost:5000/personagens');
-        const data = await response.json();
-        if (data.ok) {
-            setPersonagens(data.personagens);
-        } else {
-            alert(data.message);
-        }
-    }
-
+export default function Table({personagens}) {
     return (
         <table>
             <thead>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Add() {
+export default function Add({ onAdd }) {
     const [nome, setNome] = useState('');
     const [habilidade, setHabilidade] = useState('');
 
@@ -17,6 +17,7 @@ export default function Add() {
             setNome('');
             setHabilidade('');
             console.log(data.message);
+            onAdd();
         } else {
             console.erro(data.message);
         }
