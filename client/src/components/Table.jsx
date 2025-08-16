@@ -14,9 +14,6 @@ export default function Table({ personagens, deletePersonagem }) {
                         <td>{personagem.nome}</td>
                         <td>{personagem.habilidade}</td>
                         <td>
-                            <button>Update</button>
-                        </td>
-                        <td>
                             <button
                                 onClick={() => deletePersonagem(personagem.id)}
                             >
