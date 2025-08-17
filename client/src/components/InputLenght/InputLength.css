@@ -1,3 +1,10 @@
+.input-length > input {
+    width: 100%;
+    aspect-ratio: 20 / 3;
+    padding-inline: .5rem;
+    accent-color: gray;
+}
+
 .input-length > p {
     text-align: right;
     color: gray;
