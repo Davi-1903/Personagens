@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Add.css';
 
 export default function Add({ onAddPersonage, onAdd }) {
     const [nome, setNome] = useState('');
     const [habilidade, setHabilidade] = useState('');
+    const formsRef = useRef(null);
 
     async function addPersonagem(e) {
         e.preventDefault();
@@ -25,9 +26,20 @@ export default function Add({ onAddPersonage, onAdd }) {
         }
     }
 
+    useEffect(() => {
+        function clickOnScreen(event) {
+            if (formsRef.current && !formsRef.current.contains(event.target)) {
+                onAddPersonage(false);
+            }
+        }
+
+        window.addEventListener('mousedown', clickOnScreen);
+        return () => window.removeEventListener('mousedown', clickOnScreen);
+    }, [onAddPersonage]);
+
     return (
         <div className='add-personagem-container'>
-            <form onSubmit={addPersonagem}>
+            <form onSubmit={addPersonagem} ref={formsRef}>
                 <div className='cancel-container'>
                     <button onClick={() => onAddPersonage(false)}>x</button>
                 </div>
