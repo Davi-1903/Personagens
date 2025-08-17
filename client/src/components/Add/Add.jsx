@@ -19,16 +19,17 @@ export default function Add({ onAddPersonage, onAdd }) {
             setHabilidade('');
             console.log(data.message);
             onAdd();
+            onAddPersonage(false);
         } else {
             console.erro(data.message);
         }
     }
 
     return (
-        <div className="add-personagem-container">
+        <div className='add-personagem-container'>
             <form onSubmit={addPersonagem}>
-                <div className="cancel-container">
-                    <button onClick={() => onAddPersonage(false)} >x</button>
+                <div className='cancel-container'>
+                    <button onClick={() => onAddPersonage(false)}>x</button>
                 </div>
                 <h2>Novo Personagem</h2>
                 <input
@@ -37,7 +38,7 @@ export default function Add({ onAddPersonage, onAdd }) {
                     value={nome}
                     onChange={e => setNome(e.target.value)}
                     required
-                    />
+                />
                 <input
                     type='text'
                     placeholder='Habilidade'

@@ -12,7 +12,7 @@ table th, td {
 }
 
 table > tbody tr:nth-child(even) {
-    background-color: gray;
+    background-color: #00000020;
 }
 
 table button {
