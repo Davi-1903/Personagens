@@ -6,7 +6,7 @@ export default function App() {
     const [personagens, setPersonagens] = useState([]);
 
     async function getPersonagens() {
-        const response = await fetch('http://localhost:5000/personagens');
+        const response = await fetch('/personagens');
         const data = await response.json();
         if (data.ok) {
             setPersonagens(data.personagens);
@@ -18,7 +18,7 @@ export default function App() {
     async function deletePersonagem(id) {
         if (confirm('Você tem certeza?')) {
             const response = await fetch(
-                `http://localhost:5000/personagens/delete/${id}`,
+                `/personagens/delete/${id}`,
                 {
                     method: 'DELETE',
                 }
