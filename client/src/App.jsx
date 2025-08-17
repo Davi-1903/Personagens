@@ -38,6 +38,7 @@ export default function App() {
             <Add onAdd={getPersonagens} />
             <Table
                 personagens={personagens}
+                onUpdate={getPersonagens}
                 deletePersonagem={deletePersonagem}
             />
         </>

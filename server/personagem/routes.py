@@ -28,6 +28,20 @@ def add_personagem():
         return jsonify({'ok': False, 'messagem': 'Tudo errado'}), 500
 
 
+@per_bp.route('/update/<int:id>', methods=['PATCH'])
+def update_personagem(id):
+    try:
+        data = request.get_json()
+        personagem = db.session.get(Personagem, id)
+        personagem.nome = data.get('newNome')
+        personagem.habilidade = data.get('newHabilidade')
+        db.session.commit()
+        return jsonify({'ok': True, 'message': 'Atualizações realizadas'}), 200
+    except:
+        db.session.rollback()
+        return jsonify({'ok': False, 'message': 'Ocurreu uma desgraça interna aqui'}), 500
+
+
 @per_bp.route('/delete/<int:id>', methods=['DELETE'])
 def delete_personagem(id):
     try:
