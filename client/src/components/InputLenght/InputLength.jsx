@@ -7,6 +7,7 @@ export default function InputLength({
     value,
     setValue,
     maxLength,
+    required = false,
 }) {
     const [length, setLength] = useState(value.length);
 
@@ -21,6 +22,7 @@ export default function InputLength({
                     setLength(e.target.value.length);
                 }}
                 maxLength={maxLength}
+                required={required}
             />
             <p>
                 {length}/{maxLength}

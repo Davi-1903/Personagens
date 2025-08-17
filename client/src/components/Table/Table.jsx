@@ -54,7 +54,8 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
                                         value={newNome}
                                         setValue={setNewNome}
                                         maxLength={100}
-                                    />
+                                        required={true}
+                                        />
                                 </td>
                                 <td>
                                     <InputLength
@@ -62,6 +63,7 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
                                         value={newHabilidade}
                                         setValue={setNewHabilidade}
                                         maxLength={200}
+                                        required={true}
                                     />
                                 </td>
                                 <td>

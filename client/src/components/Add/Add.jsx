@@ -51,6 +51,7 @@ export default function Add({ onAddPersonage, onAdd }) {
                     value={nome}
                     setValue={setNome}
                     maxLength={100}
+                    required={true}
                 />
                 <InputLength
                     type={'text'}
@@ -58,6 +59,7 @@ export default function Add({ onAddPersonage, onAdd }) {
                     value={habilidade}
                     setValue={setHabilidade}
                     maxLength={200}
+                    required={true}
                 />
                 <button type='submit'>Adicionar</button>
             </form>
