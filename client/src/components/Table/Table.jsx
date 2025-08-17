@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import InputLength from '../InputLenght/InputLength';
 import './Table.css';
 
 export default function Table({ personagens, onUpdate, deletePersonagem }) {
@@ -28,7 +29,7 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
         const data = await response.json();
         if (data.ok) {
             changeToNormal();
-            onUpdate()
+            onUpdate();
         }
         alert(data.message);
     }
@@ -45,60 +46,63 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
             <tbody>
                 {personagens.map(personagem => (
                     <tr key={personagem.id}>
-                        <td>
-                            {updatingId === personagem.id ? (
-                                <input
-                                    type='text'
-                                    value={newNome}
-                                    onChange={e => setNewNome(e.target.value)}
-                                />
-                            ) : (
-                                personagem.nome
-                            )}
-                        </td>
-                        <td>
-                            {updatingId === personagem.id ? (
-                                <input
-                                    type='text'
-                                    value={newHabilidade}
-                                    onChange={e =>
-                                        setNewHabilidade(e.target.value)
-                                    }
-                                />
-                            ) : (
-                                personagem.habilidade
-                            )}
-                        </td>
-                        <td>
-                            {updatingId === personagem.id ? (
-                                <button
-                                    onClick={() =>
-                                        updatePersonagem(personagem.id)
-                                    }
-                                >
-                                    Save
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={() => changeToUpdating(personagem)}
-                                >
-                                    Update
-                                </button>
-                            )}
-                        </td>
-                        <td>
-                            {updatingId === personagem.id ? (
-                                <button onClick={changeToNormal}>Cancel</button>
-                            ) : (
-                                <button
-                                    onClick={() =>
-                                        deletePersonagem(personagem.id)
-                                    }
-                                >
-                                    Delete
-                                </button>
-                            )}
-                        </td>
+                        {updatingId === personagem.id ? (
+                            <>
+                                <td>
+                                    <InputLength
+                                        type={'text'}
+                                        value={newNome}
+                                        setValue={setNewNome}
+                                        maxLength={100}
+                                    />
+                                </td>
+                                <td>
+                                    <InputLength
+                                        type={'text'}
+                                        value={newHabilidade}
+                                        setValue={setNewHabilidade}
+                                        maxLength={200}
+                                    />
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() =>
+                                            updatePersonagem(personagem.id)
+                                        }
+                                    >
+                                        Save
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onClick={changeToNormal}>
+                                        Cancel
+                                    </button>
+                                </td>
+                            </>
+                        ) : (
+                            <>
+                                <td>{personagem.nome}</td>
+                                <td>{personagem.habilidade}</td>
+                                <td>
+                                    <button
+                                        onClick={() =>
+                                            changeToUpdating(personagem)
+                                        }
+                                    >
+                                        Update
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() =>
+                                            deletePersonagem(personagem.id)
+                                        }
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </>
+                        )}
                     </tr>
                 ))}
             </tbody>

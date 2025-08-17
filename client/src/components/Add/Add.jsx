@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import InputLength from '../InputLenght/InputLength';
 import './Add.css';
 
 export default function Add({ onAddPersonage, onAdd }) {
@@ -44,19 +45,19 @@ export default function Add({ onAddPersonage, onAdd }) {
                     <button onClick={() => onAddPersonage(false)}>x</button>
                 </div>
                 <h2>Novo Personagem</h2>
-                <input
-                    type='text'
-                    placeholder='Nome'
+                <InputLength
+                    type={'text'}
+                    placeholder={'Nome'}
                     value={nome}
-                    onChange={e => setNome(e.target.value)}
-                    required
+                    setValue={setNome}
+                    maxLength={100}
                 />
-                <input
-                    type='text'
-                    placeholder='Habilidade'
+                <InputLength
+                    type={'text'}
+                    placeholder={'Habilidade'}
                     value={habilidade}
-                    onChange={e => setHabilidade(e.target.value)}
-                    required
+                    setValue={setHabilidade}
+                    maxLength={200}
                 />
                 <button type='submit'>Adicionar</button>
             </form>
