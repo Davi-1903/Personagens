@@ -1,0 +1,24 @@
+table {
+    min-width: 32rem;
+    border-collapse: collapse;
+}
+
+table > thead {
+    border-bottom: 2px solid black;
+}
+
+table th, td {
+    padding: .5rem;
+}
+
+table > tbody tr:nth-child(even) {
+    background-color: gray;
+}
+
+table button {
+    padding: .25rem .5rem;
+}
+
+table input {
+    padding: .25rem .5rem;
+}

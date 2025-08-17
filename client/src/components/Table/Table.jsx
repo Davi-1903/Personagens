@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Table.css';
 
 export default function Table({ personagens, onUpdate, deletePersonagem }) {
     const [updatingId, setUpdating] = useState(null);
