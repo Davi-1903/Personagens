@@ -42,7 +42,7 @@ export default function Add({ onAddPersonage, onAdd }) {
         <div className='add-personagem-container'>
             <form onSubmit={addPersonagem} ref={formsRef}>
                 <div className='cancel-container'>
-                    <button onClick={() => onAddPersonage(false)}>x</button>
+                    <button type='button' onClick={() => onAddPersonage(false)}>x</button>
                 </div>
                 <h2>Novo Personagem</h2>
                 <InputLength
