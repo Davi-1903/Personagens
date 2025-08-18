@@ -22,10 +22,10 @@ def add_personagem():
         personagem = Personagem(**personagem)
         db.session.add(personagem)
         db.session.commit()
-        return jsonify({'ok': True, 'messagem': 'Tudo certo'}), 200
+        return jsonify({'ok': True, 'message': 'Personagem adicionado com sucesso'}), 200
     except:
         db.session.rollback()
-        return jsonify({'ok': False, 'messagem': 'Tudo errado'}), 500
+        return jsonify({'ok': False, 'message': 'Vix... Probleminha interno...'}), 500
 
 
 @per_bp.route('/update/<int:id>', methods=['PATCH'])

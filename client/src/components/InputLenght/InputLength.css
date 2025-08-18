@@ -3,6 +3,7 @@
     aspect-ratio: 20 / 3;
     padding-inline: .5rem;
     accent-color: gray;
+    background-color: #dfdfdf;
 }
 
 .input-length > p {

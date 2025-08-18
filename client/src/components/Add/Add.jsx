@@ -19,12 +19,10 @@ export default function Add({ onAddPersonage, onAdd }) {
         if (data.ok) {
             setNome('');
             setHabilidade('');
-            console.log(data.message);
             onAdd();
             onAddPersonage(false);
-        } else {
-            console.erro(data.message);
         }
+        alert(data.message);
     }
 
     useEffect(() => {
