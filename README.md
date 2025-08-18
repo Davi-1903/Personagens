@@ -31,10 +31,13 @@ Para executar essa brincadeira é pouco um complicado, mas vamos lá. Primeiro, 
     npm run build
     ```
 
-3. Na raiz do projeto, execute
+3. Na raiz do projeto, execute o *script*
 
     ```powershell
     python server/app.py
     ```
+
+> [!IMPORTANT]
+> A execução do [*script*](#como-executar) deve ser realizada na raiz do projeto, assim o diretório `instance/`, onde é armazenado o arquivo do banco de dados, é criado na raiz do projeto, não em outros lugar.
 
 Se tudo ocorrer bem, a aplicação está rodando em [`http://localhost:5000`](http://localhost:5000)
