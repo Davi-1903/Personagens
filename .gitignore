@@ -23,7 +23,7 @@ __pycache__/
 *.pyc
 
 # Banco de dados
-server/database/*.db
+instance/app.db
 
 # Editor directories and files
 .vscode/*

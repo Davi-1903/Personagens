@@ -3,8 +3,8 @@ from personagem.routes import per_bp
 import config, os
 
 
-app = Flask(__name__, static_folder='../client/dist', static_url_path='/')
-config.config_app(app, __file__)
+app = Flask(__name__, static_folder='../client/dist', static_url_path='/', instance_relative_config=True)
+config.config_app(app)
 app.register_blueprint(per_bp)
 
 
