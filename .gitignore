@@ -18,7 +18,7 @@ env/
 venv/
 .venv/
 
-# Arquivos bináirios
+# Arquivos binários
 __pycache__/
 *.pyc
 
