@@ -15,7 +15,7 @@ def get_personagens():
         return jsonify({'ok': False, 'message': 'Djabu foi?'}), 500
 
 
-@per_bp.route('/add', methods=['POST'])
+@per_bp.route('/', methods=['POST'])
 def add_personagem():
     try:
         personagem = request.get_json()
@@ -28,7 +28,7 @@ def add_personagem():
         return jsonify({'ok': False, 'message': 'Vix... Probleminha interno...'}), 500
 
 
-@per_bp.route('/update/<int:id>', methods=['PATCH'])
+@per_bp.route('/<int:id>', methods=['PATCH'])
 def update_personagem(id):
     try:
         data = request.get_json()
@@ -42,7 +42,7 @@ def update_personagem(id):
         return jsonify({'ok': False, 'message': 'Ocurreu uma desgraça interna aqui'}), 500
 
 
-@per_bp.route('/delete/<int:id>', methods=['DELETE'])
+@per_bp.route('/<int:id>', methods=['DELETE'])
 def delete_personagem(id):
     try:
         personagem = db.session.get(Personagem, id)

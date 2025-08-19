@@ -21,7 +21,7 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
 
     async function updatePersonagem(id) {
         const newPersonagem = { newNome, newHabilidade };
-        const response = await fetch(`/personagens/update/${id}`, {
+        const response = await fetch(`/personagens/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newPersonagem),

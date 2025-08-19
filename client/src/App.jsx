@@ -19,7 +19,7 @@ export default function App() {
 
     async function deletePersonagem(id) {
         if (confirm('Você tem certeza?')) {
-            const response = await fetch(`/personagens/delete/${id}`, {
+            const response = await fetch(`/personagens/${id}`, {
                 method: 'DELETE',
             });
             const data = await response.json();

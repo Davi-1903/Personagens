@@ -10,7 +10,7 @@ export default function Add({ onAddPersonage, onAdd }) {
     async function addPersonagem(e) {
         e.preventDefault();
         const personagem = { nome, habilidade };
-        const response = await fetch('/personagens/add', {
+        const response = await fetch('/personagens', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(personagem),

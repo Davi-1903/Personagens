@@ -1,4 +1,4 @@
-from .model import db
+from model import db
 import os
 
 
