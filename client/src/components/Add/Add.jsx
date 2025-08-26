@@ -3,22 +3,22 @@ import InputLength from '../InputLenght/InputLength';
 import './Add.css';
 
 export default function Add({ onAddPersonage, onAdd }) {
-    const [nome, setNome] = useState('');
-    const [habilidade, setHabilidade] = useState('');
+    const [form, setForm] = useState({
+        nome: '',
+        habilidade: '',
+    });
     const formsRef = useRef(null);
 
     async function addPersonagem(e) {
         e.preventDefault();
-        const personagem = { nome, habilidade };
         const response = await fetch('/personagens', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(personagem),
+            body: JSON.stringify(form),
         });
         const data = await response.json();
         if (data.ok) {
-            setNome('');
-            setHabilidade('');
+            setForm({ nome: '', habilidade: '' });
             onAdd();
             onAddPersonage(false);
         }
@@ -40,22 +40,24 @@ export default function Add({ onAddPersonage, onAdd }) {
         <div className='add-personagem-container'>
             <form onSubmit={addPersonagem} ref={formsRef}>
                 <div className='cancel-container'>
-                    <button type='button' onClick={() => onAddPersonage(false)}>x</button>
+                    <button type='button' onClick={() => onAddPersonage(false)}>
+                        x
+                    </button>
                 </div>
                 <h2>Novo Personagem</h2>
                 <InputLength
                     type={'text'}
                     placeholder={'Nome'}
-                    value={nome}
-                    setValue={setNome}
+                    value={form.nome}
+                    setValue={value => setForm({ ...form, nome: value })}
                     maxLength={100}
                     required={true}
                 />
                 <InputLength
                     type={'text'}
                     placeholder={'Habilidade'}
-                    value={habilidade}
-                    setValue={setHabilidade}
+                    value={form.habilidade}
+                    setValue={value => setForm({ ...form, habilidade: value })}
                     maxLength={200}
                     required={true}
                 />
