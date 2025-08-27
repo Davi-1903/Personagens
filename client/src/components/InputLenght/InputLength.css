@@ -1,9 +1,9 @@
 .input-length > input {
+    outline: none;
     width: 100%;
     aspect-ratio: 20 / 3;
     padding-inline: .5rem;
-    accent-color: gray;
-    background-color: #dfdfdf;
+    border: 2px solid black;
 }
 
 .input-length > p {

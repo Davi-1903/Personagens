@@ -27,7 +27,7 @@ export default function Add({ onAddPersonage, onAdd }) {
 
     useEffect(() => {
         function clickOnScreen(event) {
-            if (formsRef.current && !formsRef.current.contains(event.target)) {
+            if (!formsRef.current?.contains(event.target)) {
                 onAddPersonage(false);
             }
         }
@@ -39,11 +39,6 @@ export default function Add({ onAddPersonage, onAdd }) {
     return (
         <div className='add-personagem-container'>
             <form onSubmit={addPersonagem} ref={formsRef}>
-                <div className='cancel-container'>
-                    <button type='button' onClick={() => onAddPersonage(false)}>
-                        x
-                    </button>
-                </div>
                 <h2>Novo Personagem</h2>
                 <InputLength
                     type={'text'}

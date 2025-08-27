@@ -35,15 +35,8 @@ export default function App() {
     return (
         <div className='wrapper'>
             <div className='personagens-container'>
-                {addPersonagem && (
-                    <Add
-                        onAddPersonage={setAddPersonagem}
-                        onAdd={getPersonagens}
-                    />
-                )}
-                <button onClick={() => setAddPersonagem(true)}>
-                    Adicionar personagem
-                </button>
+                {addPersonagem && <Add onAddPersonage={setAddPersonagem} onAdd={getPersonagens} />}
+                <button onClick={() => setAddPersonagem(true)}>Adicionar personagem</button>
                 <Table
                     personagens={personagens}
                     onUpdate={getPersonagens}
