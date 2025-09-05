@@ -4,23 +4,22 @@ import './Table.css';
 
 export default function Table({ personagens, onUpdate, deletePersonagem }) {
     const [updatingId, setUpdating] = useState(null);
-    const [newNome, setNewNome] = useState('');
-    const [newHabilidade, setNewHabilidade] = useState('');
+    const [newPersonagem, setNewPersonagem] = useState({ nome: '', habilidade: '' });
 
     function changeToUpdating(personagem) {
-        setNewNome(personagem.nome);
-        setNewHabilidade(personagem.habilidade);
+        setNewPersonagem({
+            nome: personagem.nome,
+            habilidade: personagem.habilidade,
+        });
         setUpdating(personagem.id);
     }
 
     function changeToNormal() {
-        setNewNome('');
-        setNewHabilidade('');
+        setNewPersonagem({ nome: '', habilidade: '' });
         setUpdating(null);
     }
 
     async function updatePersonagem(id) {
-        const newPersonagem = { newNome, newHabilidade };
         const response = await fetch(`/personagens/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -51,8 +50,13 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
                                 <td>
                                     <InputLength
                                         type={'text'}
-                                        value={newNome}
-                                        setValue={setNewNome}
+                                        value={newPersonagem.nome}
+                                        setValue={value =>
+                                            setNewPersonagem({
+                                                ...newPersonagem,
+                                                nome: value,
+                                            })
+                                        }
                                         maxLength={100}
                                         required={true}
                                     />
@@ -60,8 +64,13 @@ export default function Table({ personagens, onUpdate, deletePersonagem }) {
                                 <td>
                                     <InputLength
                                         type={'text'}
-                                        value={newHabilidade}
-                                        setValue={setNewHabilidade}
+                                        value={newPersonagem.habilidade}
+                                        setValue={value =>
+                                            setNewPersonagem({
+                                                ...newPersonagem,
+                                                habilidade: value,
+                                            })
+                                        }
                                         maxLength={200}
                                         required={true}
                                     />

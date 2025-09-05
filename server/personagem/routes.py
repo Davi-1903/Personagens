@@ -33,13 +33,13 @@ def update_personagem(id):
     try:
         data = request.get_json()
         personagem = db.session.get(Personagem, id)
-        personagem.nome = data.get('newNome')
-        personagem.habilidade = data.get('newHabilidade')
+        personagem.nome = data.get('nome')
+        personagem.habilidade = data.get('habilidade')
         db.session.commit()
         return jsonify({'ok': True, 'message': 'Atualizações realizadas'}), 200
     except:
         db.session.rollback()
-        return jsonify({'ok': False, 'message': 'Ocurreu uma desgraça interna aqui'}), 500
+        return jsonify({'ok': False, 'message': 'Ocorreu uma desgraça interna aqui'}), 500
 
 
 @per_bp.route('/<int:id>', methods=['DELETE'])
